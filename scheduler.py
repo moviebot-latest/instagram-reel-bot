@@ -1,14 +1,16 @@
 import schedule
 import time
-from process import process_reel
+from main import process_next_clip
 
-def start_scheduler():
+def run_scheduler():
 
-    schedule.every().day.at("10:00").do(process_reel)
-    schedule.every().day.at("13:00").do(process_reel)
-    schedule.every().day.at("17:00").do(process_reel)
-    schedule.every().day.at("21:00").do(process_reel)
+    schedule.every().day.at("09:00").do(process_next_clip)
+    schedule.every().day.at("12:00").do(process_next_clip)
+    schedule.every().day.at("15:00").do(process_next_clip)
+    schedule.every().day.at("18:00").do(process_next_clip)
+
+    print("Scheduler started")
 
     while True:
         schedule.run_pending()
-        time.sleep(20)
+        time.sleep(60)
