@@ -1,0 +1,6 @@
+flask
+moviepy
+requests
+schedule
+python-telegram-bot
+openai-whisper
