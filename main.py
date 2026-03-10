@@ -7,23 +7,19 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Instagram Auto Reel Bot Running 🚀"
-
+    return "Auto Reel Bot Running"
 
 def run_scheduler():
     print("Scheduler starting...")
     scheduler.start_scheduler()
 
-
 def run_telegram():
     print("Telegram bot starting...")
     telegram_fetch.start_telegram_listener()
 
-
-# start background services
+# background threads
 threading.Thread(target=run_scheduler).start()
 threading.Thread(target=run_telegram).start()
-
 
 if __name__ == "__main__":
     print("Server starting...")
