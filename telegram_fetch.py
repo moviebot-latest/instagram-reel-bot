@@ -4,6 +4,7 @@ import os
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
+
 async def add_time(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if len(context.args) == 0:
@@ -26,9 +27,13 @@ async def show_schedule(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Current schedule:\n" + schedule)
 
 
-app = ApplicationBuilder().token(BOT_TOKEN).build()
+def start_telegram_listener():
 
-app.add_handler(CommandHandler("addtime", add_time))
-app.add_handler(CommandHandler("schedule", show_schedule))
+    app = ApplicationBuilder().token(BOT_TOKEN).build()
 
-app.run_polling()
+    app.add_handler(CommandHandler("addtime", add_time))
+    app.add_handler(CommandHandler("schedule", show_schedule))
+
+    print("Telegram bot started")
+
+    app.run_polling()
